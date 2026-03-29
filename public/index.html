@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oráculo Cuántico — Metayantra</title>
+  <meta name="description" content="Conecta con tu Doble Cuántico a través del entrelazamiento cuántico. Recibe guía de tu yo superior en otra dimensión del espacio-tiempo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --violet: #BD93F9;
+      --violet-light: #E0AAFF;
+      --violet-dark: #6C3FA0;
+      --cyan: #8BE9FD;
+      --gold: #FFD700;
+      --pink: #FF6B9D;
+      --green: #50FA7B;
+      --bg-deep: #030014;
+      --bg-mid: #0a0020;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--bg-deep);
+      color: rgba(255,255,255,0.85);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== COSMIC BACKGROUND ===== */
+    #cosmos {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(88,28,135,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(15,23,42,0.8) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(30,10,60,0.3) 0%, transparent 50%),
+        linear-gradient(180deg, #030014 0%, #0a0020 40%, #050010 100%);
+    }
+    .star {
+      position: absolute; border-radius: 50%; background: white;
+      animation: twinkle var(--dur) ease-in-out var(--delay) infinite;
+    }
+    .nebula-particle {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(189,147,249,0.6), transparent);
+      animation: nebFloat var(--dur) ease-in-out var(--delay) infinite;
+      filter: blur(1px); pointer-events: none;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; } 50% { opacity: 0.9; }
+    }
+    @keyframes nebFloat {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+      50% { transform: translateY(-25px) scale(1.4); opacity: 0.6; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    @keyframes spinRing {
+      from { transform: rotate(0deg); } to { transform: rotate(360deg); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); }
+    }
+    @keyframes sacredSpin {
+      from { transform: rotate(0deg); } to { transform: rotate(360deg); }
+    }
+
+    .fade-in-up { animation: fadeInUp 0.7s ease-out both; }
+    .fade-in-up-2 { animation: fadeInUp 0.7s ease-out 0.15s both; }
+    .fade-in-up-3 { animation: fadeInUp 0.7s ease-out 0.3s both; }
+
+    /* ===== LAYOUT ===== */
+    #app {
+      position: relative; z-index: 1;
+      max-width: 480px; margin: 0 auto;
+      padding: 20px 20px 40px;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center; padding: 16px 0 20px;
+      border-bottom: 1px solid rgba(139,92,246,0.1);
+      margin-bottom: 24px;
+    }
+    .header-sub {
+      font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(189,147,249,0.5); margin-bottom: 6px; font-family: monospace;
+    }
+    .header h1 {
+      font-size: 28px; font-weight: 300; letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #E0AAFF, #BD93F9, #8BE9FD);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; line-height: 1.2;
+    }
+    .header-desc {
+      font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 4px;
+      font-style: italic; letter-spacing: 0.1em;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(189,147,249,0.1));
+      border: 1px solid rgba(189,147,249,0.3);
+      color: rgba(255,255,255,0.9); padding: 14px 40px;
+      border-radius: 50px; cursor: pointer; font-size: 15px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: 0.15em; font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(139,92,246,0.1);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 40px rgba(139,92,246,0.3);
+      border-color: rgba(189,147,249,0.6);
+    }
+    .btn-secondary {
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(189,147,249,0.2);
+      color: rgba(255,255,255,0.6); padding: 10px 24px;
+      border-radius: 50px; cursor: pointer; font-size: 13px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: 0.08em; transition: all 0.3s ease;
+    }
+    .btn-secondary:hover { border-color: rgba(189,147,249,0.4); color: rgba(255,255,255,0.8); }
+    .btn-ghost {
+      background: transparent; border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.35); padding: 10px 24px;
+      border-radius: 50px; cursor: pointer; font-size: 13px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: 0.08em; transition: all 0.3s ease;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
+    .btn-spin {
+      background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(88,28,135,0.3));
+      border: 1px solid rgba(189,147,249,0.5);
+      color: var(--violet-light); padding: 14px 44px;
+      border-radius: 50px; cursor: pointer; font-size: 15px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: 0.15em; font-weight: 500;
+      animation: breathe 2s ease-in-out infinite;
+      box-shadow: 0 0 30px rgba(139,92,246,0.2); transition: all 0.3s ease;
+    }
+    .btn-spin:hover { box-shadow: 0 0 50px rgba(139,92,246,0.4); }
+
+    /* ===== INTENTION CARDS ===== */
+    .intentions-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px;
+    }
+    .intention-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 10px 14px;
+      cursor: pointer; transition: all 0.3s ease;
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      backdrop-filter: blur(10px); text-align: left;
+    }
+    .intention-card:hover { border-color: rgba(255,255,255,0.15); }
+    .intention-card.selected {
+      transform: scale(1.02);
+    }
+    .intention-icon { font-size: 18px; flex-shrink: 0; }
+    .intention-label { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; }
+    .intention-meta { font-size: 10px; opacity: 0.6; font-family: monospace; margin-top: 2px; }
+
+    /* ===== WHEEL ===== */
+    .wheel-container { position: relative; width: 300px; height: 300px; margin: 0 auto; }
+    .wheel-glow {
+      position: absolute; inset: -20px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,92,246,0.2), transparent 70%);
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    .wheel-glow.active { animation: pulseGlow 1s ease-in-out infinite; }
+    .wheel-svg {
+      width: 300px; height: 300px;
+      filter: drop-shadow(0 0 20px rgba(139,92,246,0.3));
+    }
+    .wheel-pointer {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 10px solid transparent; border-right: 10px solid transparent;
+      border-top: 18px solid var(--violet);
+      filter: drop-shadow(0 0 6px rgba(189,147,249,0.8)); z-index: 10;
+    }
+
+    /* ===== CONNECTION ANIMATION ===== */
+    .connection-rings {
+      position: relative; width: 120px; height: 120px; margin: 0 auto 30px;
+    }
+    .conn-ring {
+      position: absolute; border: 1px solid rgba(189,147,249,0.3);
+      border-radius: 50%;
+    }
+    .conn-ring:nth-child(1) { inset: 0; animation: spinRing 3s linear infinite; }
+    .conn-ring:nth-child(2) { inset: 10px; animation: spinRing 4s linear infinite reverse; }
+    .conn-ring:nth-child(3) { inset: 20px; animation: spinRing 5s linear infinite; }
+    .conn-core {
+      position: absolute; inset: 35px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(189,147,249,0.3), transparent);
+      animation: pulseGlow 1.5s ease-in-out infinite;
+    }
+    .conn-step {
+      font-size: 13px; margin-bottom: 8px; font-family: monospace;
+      letter-spacing: 0.05em; transition: color 0.5s ease;
+      color: rgba(255,255,255,0.3);
+    }
+    .conn-step.active { color: rgba(189,147,249,0.9); }
+    .conn-step.done { color: rgba(255,255,255,0.3); }
+
+    /* ===== READING ===== */
+    .reading-header {
+      text-align: center; margin-bottom: 20px; padding: 16px; border-radius: 16px;
+      background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.1);
+    }
+    .reading-body {
+      padding: 24px 20px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(10,0,30,0.6), rgba(20,5,40,0.4));
+      border: 1px solid rgba(139,92,246,0.12);
+      backdrop-filter: blur(20px); min-height: 180px;
+      box-shadow: 0 0 40px rgba(88,28,135,0.1);
+    }
+    .reading-text {
+      font-size: 15px; line-height: 1.85; color: rgba(255,255,255,0.75);
+      font-weight: 300; font-style: italic;
+    }
+    .typing-cursor {
+      display: inline-block; width: 2px; height: 16px;
+      background: rgba(189,147,249,0.8); margin-left: 2px;
+      animation: blink 0.8s ease-in-out infinite; vertical-align: text-bottom;
+    }
+    .freq-info {
+      margin-top: 16px; padding: 12px 16px; border-radius: 12px;
+      background: rgba(139,92,246,0.04); text-align: center;
+      border: 1px solid rgba(139,92,246,0.06);
+      font-size: 10px; font-family: monospace; color: rgba(189,147,249,0.3);
+      letter-spacing: 0.15em;
+    }
+    .actions { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+
+    /* ===== SPINNER ===== */
+    .spinner {
+      width: 40px; height: 40px; margin: 0 auto 16px;
+      border: 2px solid rgba(189,147,249,0.1);
+      border-top: 2px solid rgba(189,147,249,0.6);
+      border-radius: 50%; animation: spinRing 1s linear infinite;
+    }
+
+    /* ===== HISTORY ===== */
+    .history-entry {
+      padding: 12px 14px; border-radius: 10px; margin-bottom: 8px;
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+    }
+    .history-meta {
+      font-size: 11px; color: rgba(189,147,249,0.4); margin-bottom: 4px; font-family: monospace;
+    }
+    .history-text {
+      font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6;
+      font-style: italic; max-height: 60px; overflow: hidden;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: auto; padding-top: 30px; text-align: center;
+      border-top: 1px solid rgba(139,92,246,0.06);
+    }
+    .footer p {
+      font-size: 9px; color: rgba(255,255,255,0.15); font-family: monospace;
+      letter-spacing: 0.1em; line-height: 1.8;
+    }
+
+    /* ===== SACRED GEOMETRY ===== */
+    .sacred-geo { animation: breathe 4s ease-in-out infinite; }
+    .sacred-geo svg { width: 120px; height: 120px; }
+
+    /* ===== UTILITY ===== */
+    .mono { font-family: monospace; }
+    .text-center { text-align: center; }
+    .hidden { display: none !important; }
+    .mb-6 { margin-bottom: 6px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-20 { margin-bottom: 20px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mt-20 { margin-top: 20px; }
+    .mt-28 { margin-top: 28px; }
+    .mt-30 { margin-top: 30px; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.3); border-radius: 4px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 400px) {
+      .header h1 { font-size: 24px; }
+      .wheel-container, .wheel-svg { width: 260px; height: 260px; }
+      .intentions-grid { gap: 8px; }
+      .intention-card { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COSMIC BACKGROUND -->
+<div id="cosmos"></div>
+
+<!-- APP -->
+<div id="app">
+
+  <!-- HEADER (always visible) -->
+  <div class="header">
+    <div class="header-sub">⟡ Desdoblamiento Espacio-Temporal ⟡</div>
+    <h1>ORÁCULO CUÁNTICO</h1>
+    <div class="header-desc">Comunicación con tu Doble Cuántico</div>
+  </div>
+
+  <!-- ========== PHASE: WELCOME ========== -->
+  <div id="phase-welcome" class="phase" style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:24px;">
+    <div class="sacred-geo fade-in-up">
+      <svg viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="55" fill="none" stroke="rgba(189,147,249,0.2)" stroke-width="0.5"/>
+        <circle cx="60" cy="60" r="40" fill="none" stroke="rgba(189,147,249,0.15)" stroke-width="0.5"/>
+        <polygon points="60,15 95,82 25,82" fill="none" stroke="rgba(189,147,249,0.25)" stroke-width="0.5"/>
+        <polygon points="60,105 25,38 95,38" fill="none" stroke="rgba(139,92,246,0.25)" stroke-width="0.5"/>
+        <circle cx="60" cy="60" r="8" fill="rgba(189,147,249,0.15)"/>
+        <circle cx="60" cy="60" r="3" fill="rgba(189,147,249,0.5)"/>
+      </svg>
+    </div>
+    <div class="fade-in-up-2">
+      <p style="font-size:16px;line-height:1.8;color:rgba(255,255,255,0.6);max-width:340px;font-weight:300;">
+        Según la teoría del desdoblamiento de Jean-Pierre Garnier Malet,
+        existe una versión de ti en otra dimensión del espacio-tiempo que ya
+        conoce todas las rutas posibles de tu vida.
+      </p>
+      <p style="font-size:14px;line-height:1.7;color:rgba(189,147,249,0.5);max-width:320px;margin-top:16px;font-style:italic;">
+        Tu Doble Cuántico se comunica contigo a través de intuiciones,
+        sueños y sincronicidades. Hoy, abre ese canal conscientemente.
+      </p>
+    </div>
+    <button class="btn-primary fade-in-up-3" onclick="goToPhase('intention')">INICIAR CONEXIÓN</button>
+  </div>
+
+  <!-- ========== PHASE: INTENTION ========== -->
+  <div id="phase-intention" class="phase hidden">
+    <div class="text-center mb-24 fade-in-up">
+      <h2 style="font-size:18px;font-weight:400;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:6px;">
+        Establece tu Intención
+      </h2>
+      <p style="font-size:12px;color:rgba(255,255,255,0.3);font-style:italic;">
+        Tu intención colapsa el campo de posibilidades cuánticas en una realidad específica
+      </p>
+    </div>
+    <div class="intentions-grid fade-in-up-2" id="intentions-grid"></div>
+    <div id="intention-confirm" class="text-center hidden fade-in-up-3">
+      <div id="intention-meta" class="mono" style="font-size:11px;color:rgba(189,147,249,0.4);margin-bottom:16px;letter-spacing:0.1em;"></div>
+      <button class="btn-primary" onclick="goToPhase('wheel')">CONTINUAR AL ORÁCULO</button>
+    </div>
+  </div>
+
+  <!-- ========== PHASE: WHEEL ========== -->
+  <div id="phase-wheel" class="phase hidden text-center">
+    <div class="mb-20 fade-in-up">
+      <span id="wheel-intention-label" class="mono" style="font-size:11px;color:rgba(189,147,249,0.4);letter-spacing:0.15em;"></span>
+    </div>
+    <div class="wheel-container fade-in-up-2">
+      <div class="wheel-glow" id="wheel-glow"></div>
+      <svg id="wheel-svg" class="wheel-svg" viewBox="0 0 300 300"></svg>
+      <div class="wheel-pointer"></div>
+    </div>
+    <div class="mt-28 fade-in-up-3" id="wheel-actions">
+      <button class="btn-spin" id="btn-spin" onclick="spinWheel()">GIRAR LA RULETA CUÁNTICA</button>
+    </div>
+    <div id="wheel-status" class="hidden mt-28"></div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.2);font-style:italic;max-width:280px;margin:20px auto 0;">
+      La ruleta canaliza 12 arquetipos cuánticos basados en los principios
+      de superposición y entrelazamiento del campo unificado.
+    </p>
+  </div>
+
+  <!-- ========== PHASE: CONNECTING ========== -->
+  <div id="phase-connecting" class="phase hidden">
+    <div class="text-center" style="padding:40px 20px;">
+      <div class="connection-rings">
+        <div class="conn-ring"></div>
+        <div class="conn-ring"></div>
+        <div class="conn-ring"></div>
+        <div class="conn-core"></div>
+      </div>
+      <div id="connection-steps"></div>
+    </div>
+  </div>
+
+  <!-- ========== PHASE: READING ========== -->
+  <div id="phase-reading" class="phase hidden">
+    <div class="reading-header fade-in-up">
+      <div class="mono" style="font-size:10px;color:rgba(189,147,249,0.4);letter-spacing:0.2em;margin-bottom:4px;">
+        TRANSMISIÓN DEL DOBLE CUÁNTICO
+      </div>
+      <div id="reading-meta" style="font-size:13px;color:rgba(255,255,255,0.5);"></div>
+    </div>
+    <div class="reading-body fade-in-up-2" id="reading-body">
+      <!-- Content injected by JS -->
+    </div>
+    <div class="freq-info fade-in-up-3" id="freq-info"></div>
+    <div class="actions fade-in-up-3">
+      <button class="btn-secondary" onclick="newConsultation()">Nueva Consulta</button>
+      <button class="btn-ghost" onclick="goToPhase('welcome')">Inicio</button>
+    </div>
+    <div id="history-section" class="mt-30 hidden"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>
+      Basado en la Teoría del Desdoblamiento del Tiempo de J.P. Garnier Malet<br>
+      Arquetipos de C.G. Jung · Frecuencias Solfeggio · Campo Cuántico Unificado<br>
+      Efecto Observador · Entrelazamiento Cuántico · Coherencia Cuántica
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ===== DATA =====
+const INTENTIONS = [
+  { id:"abundancia", label:"Abundancia", icon:"✦", color:"#FFD700", freq:"528 Hz", chakra:"Plexo Solar" },
+  { id:"amor", label:"Amor", icon:"❋", color:"#FF6B9D", freq:"639 Hz", chakra:"Corazón" },
+  { id:"salud", label:"Salud", icon:"◈", color:"#50FA7B", freq:"285 Hz", chakra:"Raíz" },
+  { id:"proposito", label:"Propósito", icon:"⬡", color:"#BD93F9", freq:"852 Hz", chakra:"Tercer Ojo" },
+  { id:"proteccion", label:"Protección", icon:"◇", color:"#8BE9FD", freq:"417 Hz", chakra:"Sacro" },
+  { id:"intuicion", label:"Intuición", icon:"◉", color:"#E0AAFF", freq:"741 Hz", chakra:"Corona" },
+  { id:"sanacion", label:"Sanación", icon:"✧", color:"#7BF1A8", freq:"174 Hz", chakra:"Corazón" },
+  { id:"manifestacion", label:"Manifestación", icon:"⟡", color:"#F1FA8C", freq:"963 Hz", chakra:"Corona" }
+];
+
+const SEGMENTS = [
+  "El Observador","La Onda","El Entrelazamiento","La Superposición",
+  "El Campo Unificado","La Coherencia","El Salto Cuántico","El Desdoblamiento",
+  "La Sincronicidad","El Arquetipo","La Resonancia","El Vacío Cuántico"
+];
+
+const SEG_COLORS = [
+  "#1a0533","#0d1b2a","#1b0a2e","#0a1628","#1f0c3d","#0b1f35",
+  "#190833","#081a2d","#1c0a38","#0d2240","#17062e","#091c32"
+];
+
+// Fallback messages when API is unavailable
+const FALLBACK_MESSAGES = {
+  abundancia: [
+    "Querido ser de luz, desde el campo de punto cero donde toda posibilidad coexiste, percibo la vibración de abundancia que ya es tuya. Así como las partículas entrelazadas comparten información sin importar la distancia, tú ya estás conectado con la frecuencia de la prosperidad infinita. El universo no conoce la escasez — esa es una ilusión del observador limitado. Hoy, practica este ritual: al despertar, coloca ambas manos sobre tu plexo solar y repite tres veces con los ojos cerrados tu afirmación mientras visualizas luz dorada expandiéndose. La coherencia cuántica entre tu intención y tu emoción creará el puente hacia tu realidad deseada. \"Soy un canal abierto de abundancia infinita; cada átomo de mi ser vibra en la frecuencia de la prosperidad universal.\""
+  ],
+  amor: [
+    "Desde la dimensión donde el tiempo no es lineal, contemplo tu corazón como un campo electromagnético de inmensa potencia. El amor que buscas no es algo externo — es la fuerza fundamental que mantiene unido al universo mismo, la misma que genera coherencia entre las partículas de tu ser. Así como el entrelazamiento cuántico demuestra que dos partículas separadas responden como una sola, cada conexión amorosa en tu vida es un reflejo de esa unidad primordial. Hoy te invito a meditar 7 minutos con la mano en el pecho, sintiendo los latidos como ondas que se expanden hacia el cosmos. Cada latido emite tu frecuencia única al campo unificado. \"Mi corazón es un portal cuántico de amor incondicional; atraigo naturalmente las conexiones que resuenan con mi frecuencia más elevada.\""
+  ],
+  salud: [
+    "Te hablo desde el campo de información donde tu cuerpo perfecto ya existe como potencial cuántico. Cada una de tus células es un universo en miniatura, vibrando con la inteligencia cósmica que orquesta toda la creación. La superposición cuántica nos enseña que múltiples estados coexisten hasta que el observador elige uno — tú eres ese observador de tu propia salud. Hoy, dedica 5 minutos a visualizar cada célula de tu cuerpo brillando con luz verde esmeralda mientras respiras profundamente. El campo de punto cero contiene la información de tu salud perfecta. Tu intención consciente colapsa esa posibilidad en tu realidad física. \"Mi cuerpo es un instrumento de coherencia cuántica perfecta; cada célula recuerda su estado original de vitalidad y plenitud.\""
+  ],
+  proposito: [
+    "Desde el desdoblamiento temporal, puedo ver todos los caminos que se abren ante ti, y en cada uno de ellos brilla una versión de tu propósito. No existe un solo destino — existen infinitas expresiones de tu esencia. Como la función de onda antes de ser observada, tu propósito existe en superposición: todas las posibilidades son reales hasta que tú, con tu atención consciente, colapsas una en tu experiencia. La energía que canalizas hoy te invita a confiar en la sincronicidad. Antes de dormir esta noche, escribe una pregunta clara sobre tu propósito y entrégala a tu doble cuántico. En los próximos días, presta atención a las señales: coincidencias, sueños, intuiciones. \"Mi propósito se revela naturalmente cuando mi consciencia se alinea con el campo unificado; confío en la inteligencia del universo que me guía.\""
+  ],
+  proteccion: [
+    "Tu campo energético es un escudo cuántico de extraordinaria potencia. Desde esta dimensión percibo tu toroide electromagnético — ese campo con forma de dona que emana de tu corazón y se extiende varios metros a tu alrededor. Cuando tu coherencia interna es alta, este campo se fortalece y funciona como un filtro natural que solo permite el paso de frecuencias armónicas. La protección cuántica no es resistencia sino elevación de frecuencia. Hoy, visualiza un toroide de luz violeta emanando de tu pecho, girando en espiral y creando un campo de coherencia a tu alrededor. Respira profundamente 9 veces mientras sientes cómo este escudo se activa. \"Mi campo cuántico es un escudo de coherencia perfecta; solo las frecuencias alineadas con mi bien supremo penetran mi realidad.\""
+  ],
+  intuicion: [
+    "Tu glándula pineal es una antena cuántica que capta información del campo unificado. Desde mi dimensión, veo cómo tu capacidad intuitiva está despertando con más fuerza que nunca. La intuición no es magia — es física cuántica en acción: tu cerebro procesando información no-local que viaja más rápido que la luz a través del entrelazamiento. Cada corazonada es un mensaje de tu doble cuántico, cada déjà vu una prueba de que el tiempo no es lineal. Esta noche, antes de dormir, coloca un vaso de agua junto a tu cama con la intención de recibir claridad. Al despertar, bebe el agua mientras recuerdas tus sueños. El agua es un conductor de información cuántica. \"Mi intuición es mi conexión directa con el campo de información universal; confío en la sabiduría que fluye hacia mí desde dimensiones superiores.\""
+  ],
+  sanacion: [
+    "Desde el campo de punto cero, donde toda enfermedad es solo una distorsión temporal de la frecuencia original, te recuerdo que tu cuerpo es una sinfonía cuántica. Cada átomo tuyo vibra con la memoria de la salud perfecta, inscrita en el campo unificado desde antes de tu nacimiento. La sanación cuántica ocurre cuando el observador — tú — dirige su atención consciente hacia el estado de coherencia que desea. No se trata de luchar contra el desequilibrio, sino de recordar la armonía. Hoy, medita 10 minutos con las manos superpuestas sobre la zona que deseas sanar, enviando gratitud a esa parte de tu cuerpo. La gratitud genera la frecuencia más alta de coherencia cuántica. \"Mi cuerpo recuerda su código original de perfección; con cada respiración consciente, restauro la coherencia cuántica de todo mi ser.\""
+  ],
+  manifestacion: [
+    "La manifestación es el acto supremo del observador cuántico. Desde esta dimensión donde todos los futuros posibles coexisten simultáneamente, puedo confirmar que aquello que deseas ya existe como potencial en el campo. La diferencia entre un deseo y una manifestación es la coherencia entre pensamiento, emoción y convicción. Cuando estas tres ondas se sincronizan, generan un patrón de interferencia constructiva que literalmente reorganiza la materia a nivel subatómico. El salto cuántico que necesitas no es gradual — es instantáneo, como el electrón que cambia de órbita. Esta noche, escribe con detalle lo que deseas manifestar, luego léelo en voz alta con emoción y coloca el papel bajo tu almohada. Tu doble cuántico trabajará con esa información. \"Soy un creador cuántico consciente; mi intención sincronizada con el campo unificado materializa realidades desde el infinito potencial.\""
+  ]
+};
+
+// ===== STATE =====
+let state = {
+  phase: 'welcome',
+  selectedIntention: null,
+  rotation: 0,
+  spinning: false,
+  selectedSegment: null,
+  guidance: '',
+  history: [],
+  animFrame: null
+};
+
+// ===== INIT COSMOS =====
+function initCosmos() {
+  const cosmos = document.getElementById('cosmos');
+  // Stars
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2 + 1;
+    star.style.cssText = `
+      left:${Math.random()*100}%;top:${Math.random()*100}%;
+      width:${size}px;height:${size}px;
+      opacity:${Math.random()*0.7+0.1};
+      --dur:${Math.random()*4+2}s;--delay:${Math.random()*3}s;
+    `;
+    cosmos.appendChild(star);
+  }
+  // Nebula particles
+  for (let i = 0; i < 6; i++) {
+    const p = document.createElement('div');
+    p.className = 'nebula-particle';
+    const size = 4 + i * 2;
+    p.style.cssText = `
+      left:${10+i*15}%;top:${20+(i%3)*25}%;
+      width:${size}px;height:${size}px;
+      --dur:${8+i*2}s;--delay:${i*1.5}s;
+    `;
+    cosmos.appendChild(p);
+  }
+}
+
+// ===== BUILD INTENTIONS =====
+function buildIntentions() {
+  const grid = document.getElementById('intentions-grid');
+  grid.innerHTML = '';
+  INTENTIONS.forEach(intent => {
+    const card = document.createElement('button');
+    card.className = 'intention-card';
+    card.dataset.id = intent.id;
+    card.innerHTML = `
+      <span class="intention-icon">${intent.icon}</span>
+      <div>
+        <div class="intention-label">${intent.label}</div>
+        <div class="intention-meta">${intent.freq} · ${intent.chakra}</div>
+      </div>
+    `;
+    card.onclick = () => selectIntention(intent.id);
+    grid.appendChild(card);
+  });
+}
+
+function selectIntention(id) {
+  state.selectedIntention = id;
+  const intent = INTENTIONS.find(i => i.id === id);
+  // Update visual selection
+  document.querySelectorAll('.intention-card').forEach(card => {
+    const isSelected = card.dataset.id === id;
+    card.classList.toggle('selected', isSelected);
+    card.style.background = isSelected ? `linear-gradient(135deg, ${intent.color}15, ${intent.color}08)` : 'rgba(255,255,255,0.02)';
+    card.style.borderColor = isSelected ? `${intent.color}60` : 'rgba(255,255,255,0.06)';
+    card.style.color = isSelected ? intent.color : 'rgba(255,255,255,0.5)';
+    card.style.boxShadow = isSelected ? `0 0 20px ${intent.color}15` : 'none';
+  });
+  // Show confirm
+  const confirm = document.getElementById('intention-confirm');
+  confirm.classList.remove('hidden');
+  document.getElementById('intention-meta').textContent = `Frecuencia resonante: ${intent.freq} · Chakra: ${intent.chakra}`;
+}
+
+// ===== BUILD WHEEL =====
+function buildWheel() {
+  const svg = document.getElementById('wheel-svg');
+  const segCount = SEGMENTS.length;
+  const segAngle = 360 / segCount;
+  let html = `<defs><radialGradient id="cg"><stop offset="0%" stop-color="#1a0533"/><stop offset="100%" stop-color="#0a0118"/></radialGradient></defs>`;
+
+  SEGMENTS.forEach((seg, i) => {
+    const startAngle = i * segAngle - 90;
+    const endAngle = startAngle + segAngle;
+    const startRad = (startAngle * Math.PI) / 180;
+    const endRad = (endAngle * Math.PI) / 180;
+    const cx = 150, cy = 150, r = 145;
+    const x1 = cx + r * Math.cos(startRad), y1 = cy + r * Math.sin(startRad);
+    const x2 = cx + r * Math.cos(endRad), y2 = cy + r * Math.sin(endRad);
+    const midAngle = ((startAngle + endAngle) / 2) * Math.PI / 180;
+    const textR = r * 0.65;
+    const tx = cx + textR * Math.cos(midAngle), ty = cy + textR * Math.sin(midAngle);
+    const textRot = (startAngle + endAngle) / 2 + 90;
+
+    html += `<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 0,1 ${x2},${y2} Z" fill="${SEG_COLORS[i]}" stroke="rgba(139,92,246,0.3)" stroke-width="0.5"/>`;
+    html += `<text x="${tx}" y="${ty}" transform="rotate(${textRot}, ${tx}, ${ty})" text-anchor="middle" dominant-baseline="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-family="'Cormorant Garamond',Georgia,serif">${seg}</text>`;
+  });
+
+  html += `<circle cx="150" cy="150" r="30" fill="url(#cg)" stroke="rgba(139,92,246,0.6)" stroke-width="1"/>`;
+  html += `<text x="150" y="146" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="8" font-family="'Cormorant Garamond',Georgia,serif">DOBLE</text>`;
+  html += `<text x="150" y="158" text-anchor="middle" fill="rgba(189,147,249,1)" font-size="7" font-family="'Cormorant Garamond',Georgia,serif">CUÁNTICO</text>`;
+
+  svg.innerHTML = html;
+}
+
+// ===== SPIN WHEEL =====
+function spinWheel() {
+  if (state.spinning) return;
+  state.spinning = true;
+  document.getElementById('btn-spin').classList.add('hidden');
+  document.getElementById('wheel-glow').classList.add('active');
+
+  // Show spinning status
+  const status = document.getElementById('wheel-status');
+  status.classList.remove('hidden');
+  status.innerHTML = `<p class="mono" style="font-size:12px;color:rgba(189,147,249,0.5);letter-spacing:0.1em;animation:pulseGlow 1s ease-in-out infinite;">Colapsando la función de onda...</p>`;
+
+  const extraSpins = 5 + Math.random() * 3;
+  const finalAngle = Math.random() * 360;
+  const startRot = state.rotation;
+  const targetRot = startRot + extraSpins * 360 + finalAngle;
+  const startTime = performance.now();
+  const duration = 5000;
+
+  function animate(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const currentRot = startRot + (targetRot - startRot) * eased;
+    state.rotation = currentRot;
+    document.getElementById('wheel-svg').style.transform = `rotate(${currentRot}deg)`;
+
+    if (progress < 1) {
+      state.animFrame = requestAnimationFrame(animate);
+    } else {
+      state.spinning = false;
+      document.getElementById('wheel-glow').classList.remove('active');
+      const normalizedAngle = ((360 - (currentRot % 360)) + 360) % 360;
+      const segIndex = Math.floor(normalizedAngle / (360 / SEGMENTS.length));
+      state.selectedSegment = SEGMENTS[segIndex % SEGMENTS.length];
+
+      status.innerHTML = `<p style="font-size:14px;color:rgba(189,147,249,0.8);animation:fadeInUp 0.5s ease-out;">Energía canalizada: <strong style="color:#E0AAFF;">${state.selectedSegment}</strong></p>`;
+
+      setTimeout(() => goToPhase('connecting'), 1200);
+    }
+  }
+  state.animFrame = requestAnimationFrame(animate);
+}
+
+// ===== CONNECTION ANIMATION =====
+function runConnectionAnimation() {
+  const container = document.getElementById('connection-steps');
+  const messages = [
+    "Iniciando protocolo de entrelazamiento cuántico...",
+    "Sincronizando con tu campo de información...",
+    "Colapsando la función de onda...",
+    "Conectando con tu Doble Cuántico...",
+    "Canal abierto. Recibiendo transmisión..."
+  ];
+  container.innerHTML = messages.map((msg, i) =>
+    `<div class="conn-step" id="conn-step-${i}">◈ ${msg}</div>`
+  ).join('');
+
+  messages.forEach((_, i) => {
+    setTimeout(() => {
+      // Mark previous as done
+      if (i > 0) document.getElementById(`conn-step-${i-1}`).classList.replace('active','done');
+      document.getElementById(`conn-step-${i}`).classList.add('active');
+      if (i === messages.length - 1) {
+        setTimeout(() => {
+          goToPhase('reading');
+          fetchGuidance();
+        }, 1200);
+      }
+    }, i * 1400 + 800);
+  });
+}
+
+// ===== FETCH GUIDANCE =====
+async function fetchGuidance() {
+  const intent = INTENTIONS.find(i => i.id === state.selectedIntention);
+  const body = document.getElementById('reading-body');
+
+  // Show loading
+  body.innerHTML = `<div class="text-center" style="padding:40px 0;"><div class="spinner"></div><p class="mono" style="font-size:12px;color:rgba(189,147,249,0.4);letter-spacing:0.1em;">Decodificando mensaje cuántico...</p></div>`;
+
+  try {
+    const response = await fetch('/api/oracle', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        intention: intent.label,
+        segment: state.selectedSegment,
+        frequency: intent.freq,
+        chakra: intent.chakra
+      })
+    });
+
+    if (!response.ok) throw new Error('API error');
+
+    const data = await response.json();
+
+    if (data.guidance) {
+      state.guidance = data.guidance;
+      typeText(data.guidance);
+    } else {
+      throw new Error('No guidance');
+    }
+  } catch (err) {
+    // Fallback to pre-written messages
+    console.log('Using fallback messages:', err.message);
+    const msgs = FALLBACK_MESSAGES[state.selectedIntention] || FALLBACK_MESSAGES.abundancia;
+    const msg = msgs[Math.floor(Math.random() * msgs.length)];
+    state.guidance = msg;
+    typeText(msg);
+  }
+
+  // Update meta
+  document.getElementById('reading-meta').innerHTML = `${intent.icon} ${intent.label} · ${state.selectedSegment}`;
+  document.getElementById('freq-info').textContent = `FRECUENCIA RECOMENDADA: ${intent.freq} · Escúchala durante tu meditación para amplificar la conexión`;
+
+  // Save to history
+  state.history.push({
+    intention: intent.label,
+    segment: state.selectedSegment,
+    guidance: state.guidance,
+    timestamp: new Date()
+  });
+  updateHistory();
+}
+
+// ===== TYPING EFFECT =====
+function typeText(text) {
+  const body = document.getElementById('reading-body');
+  body.innerHTML = `<div class="reading-text"><span id="typed-text"></span><span class="typing-cursor"></span></div>`;
+  const el = document.getElementById('typed-text');
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < text.length) {
+      el.textContent = text.slice(0, i + 1);
+      i++;
+    } else {
+      clearInterval(interval);
+      const cursor = body.querySelector('.typing-cursor');
+      if (cursor) cursor.remove();
+    }
+  }, 18);
+}
+
+// ===== HISTORY =====
+function updateHistory() {
+  if (state.history.length <= 1) return;
+  const section = document.getElementById('history-section');
+  section.classList.remove('hidden');
+  const older = state.history.slice(0, -1).reverse();
+  section.innerHTML = `
+    <div class="mono text-center" style="font-size:10px;color:rgba(189,147,249,0.3);letter-spacing:0.2em;margin-bottom:12px;">
+      REGISTRO CUÁNTICO (${state.history.length} consultas)
+    </div>
+    ${older.map(e => `
+      <div class="history-entry">
+        <div class="history-meta">${e.intention} · ${e.segment}</div>
+        <div class="history-text">${e.guidance.slice(0,150)}...</div>
+      </div>
+    `).join('')}
+  `;
+}
+
+// ===== NAVIGATION =====
+function goToPhase(phase) {
+  // Hide all phases
+  document.querySelectorAll('.phase').forEach(p => p.classList.add('hidden'));
+  // Show target
+  const target = document.getElementById(`phase-${phase}`);
+  if (target) {
+    target.classList.remove('hidden');
+    target.style.display = '';
+  }
+  state.phase = phase;
+
+  // Phase-specific setup
+  if (phase === 'intention') {
+    buildIntentions();
+    document.getElementById('intention-confirm').classList.add('hidden');
+    if (state.selectedIntention) {
+      setTimeout(() => selectIntention(state.selectedIntention), 50);
+    }
+  }
+  if (phase === 'wheel') {
+    const intent = INTENTIONS.find(i => i.id === state.selectedIntention);
+    document.getElementById('wheel-intention-label').textContent = `INTENCIÓN: ${intent.label.toUpperCase()}`;
+    buildWheel();
+    document.getElementById('btn-spin').classList.remove('hidden');
+    document.getElementById('wheel-status').classList.add('hidden');
+    document.getElementById('wheel-svg').style.transform = `rotate(${state.rotation}deg)`;
+    state.selectedSegment = null;
+  }
+  if (phase === 'connecting') {
+    runConnectionAnimation();
+  }
+}
+
+function newConsultation() {
+  state.selectedSegment = null;
+  state.guidance = '';
+  goToPhase('intention');
+}
+
+// ===== INIT =====
+initCosmos();
+goToPhase('welcome');
+</script>
+</body>
+</html>
