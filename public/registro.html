@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Doble Cuántico Tiene un Mensaje Para Ti — Metayantra</title>
+  <meta name="description" content="Una versión de ti en otra dimensión ya conoce las respuestas que buscas. Conéctate con tu Doble Cuántico y recibe guía personalizada del campo cuántico universal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --violet: #BD93F9;
+      --violet-light: #E0AAFF;
+      --violet-dark: #6C3FA0;
+      --cyan: #8BE9FD;
+      --gold: #FFD700;
+      --bg-deep: #030014;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--bg-deep);
+      color: rgba(255,255,255,0.85);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== COSMIC BACKGROUND ===== */
+    #cosmos {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(88,28,135,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(15,23,42,0.8) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(30,10,60,0.3) 0%, transparent 50%),
+        linear-gradient(180deg, #030014 0%, #0a0020 40%, #050010 100%);
+    }
+    .star {
+      position: absolute; border-radius: 50%; background: white;
+      animation: twinkle var(--dur) ease-in-out var(--delay) infinite;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes twinkle { 0%,100%{opacity:0.1}50%{opacity:0.9} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)} }
+    @keyframes breathe { 0%,100%{transform:scale(1)}50%{transform:scale(1.03)} }
+    @keyframes pulseGlow { 0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.05)} }
+    @keyframes floatSlow { 0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)} }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes spinSlow { from{transform:rotate(0deg)}to{transform:rotate(360deg)} }
+
+    .fade-in { animation: fadeInUp 0.7s ease-out both; }
+    .fade-in-2 { animation: fadeInUp 0.7s ease-out 0.15s both; }
+    .fade-in-3 { animation: fadeInUp 0.7s ease-out 0.3s both; }
+    .fade-in-4 { animation: fadeInUp 0.7s ease-out 0.45s both; }
+
+    /* ===== LAYOUT ===== */
+    #app {
+      position: relative; z-index: 1;
+      max-width: 520px; margin: 0 auto;
+      padding: 20px 24px 40px;
+      min-height: 100vh;
+    }
+
+    /* ===== SACRED GEOMETRY HEADER ===== */
+    .geo-header {
+      text-align: center; padding: 24px 0 0;
+      position: relative;
+    }
+    .geo-symbol {
+      width: 80px; height: 80px; margin: 0 auto 16px;
+      animation: breathe 4s ease-in-out infinite, floatSlow 6s ease-in-out infinite;
+    }
+    .brand-tag {
+      font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase;
+      color: rgba(189,147,249,0.4); font-family: monospace;
+      margin-bottom: 20px;
+    }
+
+    /* ===== HEADLINE ===== */
+    .headline {
+      font-size: 30px; font-weight: 300; line-height: 1.25;
+      text-align: center; margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+    .headline em {
+      font-style: italic;
+      background: linear-gradient(135deg, #E0AAFF, #BD93F9, #8BE9FD);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; font-weight: 500;
+    }
+    .subheadline {
+      text-align: center; font-size: 16px; line-height: 1.7;
+      color: rgba(255,255,255,0.5); font-weight: 300;
+      max-width: 420px; margin: 0 auto 28px;
+    }
+
+    /* ===== SOCIAL PROOF ===== */
+    .social-proof {
+      display: flex; justify-content: center; gap: 24px;
+      margin-bottom: 32px; flex-wrap: wrap;
+    }
+    .proof-item {
+      text-align: center;
+    }
+    .proof-number {
+      font-size: 22px; font-weight: 600;
+      background: linear-gradient(135deg, var(--gold), #FFA500);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .proof-label {
+      font-size: 10px; color: rgba(255,255,255,0.3);
+      font-family: monospace; letter-spacing: 0.1em; margin-top: 2px;
+    }
+
+    /* ===== WHAT YOU'LL DISCOVER ===== */
+    .discover-section {
+      margin-bottom: 32px;
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(139,92,246,0.04);
+      border: 1px solid rgba(139,92,246,0.08);
+    }
+    .discover-title {
+      font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(189,147,249,0.5); text-align: center; margin-bottom: 16px;
+      font-family: monospace;
+    }
+    .discover-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .discover-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 12px; border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .discover-icon {
+      font-size: 20px; flex-shrink: 0; margin-top: 2px;
+      filter: drop-shadow(0 0 4px rgba(189,147,249,0.3));
+    }
+    .discover-text {
+      font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5;
+    }
+    .discover-text strong {
+      color: rgba(255,255,255,0.85); display: block; margin-bottom: 1px;
+    }
+
+    /* ===== FORM CONTAINER ===== */
+    .form-container {
+      background: linear-gradient(135deg, rgba(10,0,30,0.7), rgba(20,5,40,0.5));
+      border: 1px solid rgba(139,92,246,0.15);
+      border-radius: 20px; padding: 28px 24px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 60px rgba(88,28,135,0.1);
+      margin-bottom: 24px;
+    }
+    .form-title {
+      text-align: center; font-size: 20px; font-weight: 400;
+      margin-bottom: 4px; color: rgba(255,255,255,0.9);
+      letter-spacing: 0.05em;
+    }
+    .form-subtitle {
+      text-align: center; font-size: 12px;
+      color: rgba(189,147,249,0.4); font-family: monospace;
+      letter-spacing: 0.1em; margin-bottom: 24px;
+    }
+
+    /* ===== STEP INDICATOR ===== */
+    .steps-indicator {
+      display: flex; justify-content: center; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .step-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+    }
+    .step-dot.active {
+      background: var(--violet);
+      box-shadow: 0 0 10px rgba(189,147,249,0.5);
+      width: 24px; border-radius: 4px;
+    }
+    .step-dot.done {
+      background: rgba(189,147,249,0.4);
+    }
+
+    /* ===== FORM FIELDS ===== */
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeInUp 0.4s ease-out; }
+
+    .field-group { margin-bottom: 16px; }
+    .field-label {
+      display: block; font-size: 12px; color: rgba(189,147,249,0.5);
+      letter-spacing: 0.1em; margin-bottom: 6px; font-family: monospace;
+      text-transform: uppercase;
+    }
+    .field-input {
+      width: 100%; padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(139,92,246,0.15);
+      border-radius: 12px; color: rgba(255,255,255,0.9);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px; outline: none;
+      transition: all 0.3s ease;
+    }
+    .field-input::placeholder { color: rgba(255,255,255,0.2); }
+    .field-input:focus {
+      border-color: rgba(189,147,249,0.5);
+      box-shadow: 0 0 20px rgba(139,92,246,0.1);
+      background: rgba(255,255,255,0.06);
+    }
+    select.field-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23BD93F9' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    select.field-input option {
+      background: #1a0533; color: rgba(255,255,255,0.9);
+    }
+
+    /* ===== INTEREST CARDS ===== */
+    .interest-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .interest-card {
+      padding: 12px; border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer; transition: all 0.3s ease;
+      text-align: center;
+    }
+    .interest-card:hover { border-color: rgba(189,147,249,0.3); }
+    .interest-card.selected {
+      border-color: rgba(189,147,249,0.5);
+      background: rgba(139,92,246,0.1);
+      box-shadow: 0 0 20px rgba(139,92,246,0.1);
+    }
+    .interest-card-icon { font-size: 22px; margin-bottom: 4px; }
+    .interest-card-label {
+      font-size: 12px; color: rgba(255,255,255,0.6);
+      transition: color 0.3s;
+    }
+    .interest-card.selected .interest-card-label { color: var(--violet-light); }
+
+    .step-question {
+      text-align: center; font-size: 16px; color: rgba(255,255,255,0.7);
+      margin-bottom: 16px; font-style: italic; line-height: 1.5;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-next {
+      width: 100%; padding: 16px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(88,28,135,0.3));
+      border: 1px solid rgba(189,147,249,0.4);
+      border-radius: 50px; color: var(--violet-light);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px; font-weight: 500;
+      letter-spacing: 0.12em; cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+    .btn-next:hover {
+      box-shadow: 0 0 30px rgba(139,92,246,0.3);
+      border-color: rgba(189,147,249,0.7);
+    }
+    .btn-next:disabled {
+      opacity: 0.3; cursor: not-allowed;
+    }
+    .btn-next:disabled:hover { box-shadow: none; }
+
+    .btn-submit {
+      width: 100%; padding: 18px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.4), rgba(88,28,135,0.4));
+      border: 1px solid rgba(189,147,249,0.5);
+      border-radius: 50px; color: white;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px; font-weight: 600;
+      letter-spacing: 0.15em; cursor: pointer;
+      transition: all 0.3s ease;
+      animation: breathe 2.5s ease-in-out infinite;
+      box-shadow: 0 0 30px rgba(139,92,246,0.2);
+      position: relative; overflow: hidden;
+    }
+    .btn-submit::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    .btn-submit span { position: relative; z-index: 1; }
+    .btn-submit:hover {
+      box-shadow: 0 0 50px rgba(139,92,246,0.4);
+      border-color: rgba(189,147,249,0.8);
+    }
+
+    .btn-back {
+      background: none; border: none; color: rgba(255,255,255,0.25);
+      font-size: 12px; cursor: pointer; font-family: monospace;
+      letter-spacing: 0.1em; margin-top: 12px;
+      transition: color 0.3s;
+    }
+    .btn-back:hover { color: rgba(255,255,255,0.5); }
+
+    /* ===== PRIVACY NOTE ===== */
+    .privacy-note {
+      text-align: center; font-size: 10px; color: rgba(255,255,255,0.15);
+      font-family: monospace; letter-spacing: 0.05em; line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    /* ===== TESTIMONIAL ===== */
+    .testimonial {
+      padding: 20px; border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      margin-bottom: 24px; text-align: center;
+    }
+    .testimonial-text {
+      font-size: 14px; font-style: italic; line-height: 1.7;
+      color: rgba(255,255,255,0.5); margin-bottom: 8px;
+    }
+    .testimonial-author {
+      font-size: 11px; color: rgba(189,147,249,0.4);
+      font-family: monospace; letter-spacing: 0.1em;
+    }
+
+    /* ===== URGENCY BAR ===== */
+    .urgency-bar {
+      text-align: center; padding: 10px 16px;
+      border-radius: 10px; margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,165,0,0.04));
+      border: 1px solid rgba(255,215,0,0.1);
+      font-size: 12px; color: rgba(255,215,0,0.7);
+      font-family: monospace; letter-spacing: 0.08em;
+    }
+    .urgency-bar strong { color: var(--gold); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center; padding-top: 20px;
+      border-top: 1px solid rgba(139,92,246,0.06);
+    }
+    .footer p {
+      font-size: 9px; color: rgba(255,255,255,0.12); font-family: monospace;
+      letter-spacing: 0.1em; line-height: 1.8;
+    }
+    .footer a {
+      color: rgba(189,147,249,0.3); text-decoration: none;
+    }
+
+    /* ===== LOADING OVERLAY ===== */
+    .loading-overlay {
+      display: none; position: fixed; inset: 0; z-index: 100;
+      background: rgba(3,0,20,0.95);
+      justify-content: center; align-items: center;
+      flex-direction: column; gap: 20px;
+    }
+    .loading-overlay.active { display: flex; }
+    .loading-spinner {
+      width: 50px; height: 50px;
+      border: 2px solid rgba(189,147,249,0.1);
+      border-top: 2px solid var(--violet);
+      border-radius: 50%; animation: spinSlow 1.2s linear infinite;
+    }
+    .loading-text {
+      font-size: 14px; color: rgba(189,147,249,0.6);
+      font-family: monospace; letter-spacing: 0.15em;
+      animation: pulseGlow 1.5s ease-in-out infinite;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 400px) {
+      #app { padding: 16px 18px 32px; }
+      .headline { font-size: 25px; }
+      .discover-grid { grid-template-columns: 1fr; }
+      .social-proof { gap: 16px; }
+      .form-container { padding: 22px 18px; }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.3); border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+<div id="cosmos"></div>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loading">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Preparando tu portal cuántico...</div>
+</div>
+
+<div id="app">
+
+  <!-- ===== SACRED GEOMETRY HEADER ===== -->
+  <div class="geo-header fade-in">
+    <div class="geo-symbol">
+      <svg viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(189,147,249,0.2)" stroke-width="0.5"/>
+        <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(189,147,249,0.15)" stroke-width="0.5"/>
+        <polygon points="40,8 65,57 15,57" fill="none" stroke="rgba(189,147,249,0.2)" stroke-width="0.5"/>
+        <polygon points="40,72 15,23 65,23" fill="none" stroke="rgba(139,92,246,0.2)" stroke-width="0.5"/>
+        <circle cx="40" cy="40" r="6" fill="rgba(189,147,249,0.1)"/>
+        <circle cx="40" cy="40" r="2.5" fill="rgba(189,147,249,0.4)"/>
+      </svg>
+    </div>
+    <div class="brand-tag">⟡ Metayantra · Uniendo Ciencia con Misticismo ⟡</div>
+  </div>
+
+  <!-- ===== HEADLINE ===== -->
+  <h1 class="headline fade-in-2">
+    Tu <em>Doble Cuántico</em> tiene<br>un mensaje para ti
+  </h1>
+  <p class="subheadline fade-in-3">
+    Según la física del desdoblamiento temporal, una versión de ti en otra 
+    dimensión ya conoce las respuestas que buscas. Hoy puedes abrir ese canal 
+    y recibir su guía.
+  </p>
+
+  <!-- ===== URGENCY BAR ===== -->
+  <div class="urgency-bar fade-in-3">
+    <strong id="counter-number">2,847</strong> personas ya conectaron con su Doble Cuántico este mes
+  </div>
+
+  <!-- ===== WHAT YOU'LL DISCOVER ===== -->
+  <div class="discover-section fade-in-3">
+    <div class="discover-title">Lo que descubrirás al entrar</div>
+    <div class="discover-grid">
+      <div class="discover-item">
+        <span class="discover-icon">◈</span>
+        <div class="discover-text">
+          <strong>Ruleta de Arquetipos</strong>
+          12 energías cuánticas canalizarán tu lectura
+        </div>
+      </div>
+      <div class="discover-item">
+        <span class="discover-icon">✦</span>
+        <div class="discover-text">
+          <strong>Mensaje Personalizado</strong>
+          Tu Doble Cuántico responde según tu intención
+        </div>
+      </div>
+      <div class="discover-item">
+        <span class="discover-icon">⟡</span>
+        <div class="discover-text">
+          <strong>Frecuencia Solfeggio</strong>
+          Descubre qué frecuencia necesitas hoy
+        </div>
+      </div>
+      <div class="discover-item">
+        <span class="discover-icon">◉</span>
+        <div class="discover-text">
+          <strong>Ritual de Activación</strong>
+          Una práctica específica para amplificar la guía
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TESTIMONIAL ===== -->
+  <div class="testimonial fade-in-4">
+    <div class="testimonial-text">
+      "No esperaba sentir algo tan profundo. El mensaje que recibí describía 
+      exactamente lo que estaba atravesando. Fue como si alguien que me conoce 
+      a un nivel que no puedo explicar me hablara directo al alma."
+    </div>
+    <div class="testimonial-author">— Andrea M. · Ciudad de México</div>
+  </div>
+
+  <!-- ===== FORM ===== -->
+  <div class="form-container fade-in-4">
+    <div class="form-title">Abre tu Canal Cuántico</div>
+    <div class="form-subtitle">Completa estos datos para sintonizar tu frecuencia</div>
+
+    <div class="steps-indicator">
+      <div class="step-dot active" data-step="1"></div>
+      <div class="step-dot" data-step="2"></div>
+      <div class="step-dot" data-step="3"></div>
+    </div>
+
+    <form id="oracle-form" novalidate>
+
+      <!-- STEP 1: Identity -->
+      <div class="form-step active" data-step="1">
+        <div class="step-question">
+          ¿Cómo te llamas, viajero del campo cuántico?
+        </div>
+        <div class="field-group">
+          <label class="field-label">Tu nombre</label>
+          <input type="text" class="field-input" id="field-name" placeholder="Escribe tu nombre completo" required autocomplete="name">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Tu email</label>
+          <input type="email" class="field-input" id="field-email" placeholder="tu@email.com" required autocomplete="email">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Tu WhatsApp</label>
+          <input type="tel" class="field-input" id="field-phone" placeholder="+52 55 1234 5678" autocomplete="tel">
+        </div>
+        <button type="button" class="btn-next" onclick="nextStep(2)">SIGUIENTE</button>
+      </div>
+
+      <!-- STEP 2: Cosmic Profile -->
+      <div class="form-step" data-step="2">
+        <div class="step-question">
+          Tu fecha de nacimiento nos permite calcular tu resonancia cósmica personal
+        </div>
+        <div class="field-group">
+          <label class="field-label">Fecha de nacimiento</label>
+          <input type="date" class="field-input" id="field-birthdate" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label">País</label>
+          <select class="field-input" id="field-country">
+            <option value="">Selecciona tu país</option>
+            <option value="MX">México</option>
+            <option value="US">Estados Unidos</option>
+            <option value="ES">España</option>
+            <option value="CO">Colombia</option>
+            <option value="AR">Argentina</option>
+            <option value="PE">Perú</option>
+            <option value="CL">Chile</option>
+            <option value="EC">Ecuador</option>
+            <option value="VE">Venezuela</option>
+            <option value="GT">Guatemala</option>
+            <option value="CR">Costa Rica</option>
+            <option value="PA">Panamá</option>
+            <option value="DO">República Dominicana</option>
+            <option value="BO">Bolivia</option>
+            <option value="UY">Uruguay</option>
+            <option value="PY">Paraguay</option>
+            <option value="HN">Honduras</option>
+            <option value="SV">El Salvador</option>
+            <option value="NI">Nicaragua</option>
+            <option value="BR">Brasil</option>
+            <option value="OTHER">Otro</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label">¿Cómo nos conociste?</label>
+          <select class="field-input" id="field-source">
+            <option value="">Selecciona una opción</option>
+            <option value="instagram">Instagram</option>
+            <option value="facebook">Facebook</option>
+            <option value="tiktok">TikTok</option>
+            <option value="youtube">YouTube</option>
+            <option value="google">Google / Buscador</option>
+            <option value="amigo">Un amigo me recomendó</option>
+            <option value="podcast">Podcast Hackea tu Realidad</option>
+            <option value="tienda">Ya soy cliente de Metayantra</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <button type="button" class="btn-next" onclick="nextStep(3)">SIGUIENTE</button>
+        <div class="text-center">
+          <button type="button" class="btn-back" onclick="prevStep(1)">◂ Regresar</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Spiritual Interest -->
+      <div class="form-step" data-step="3">
+        <div class="step-question">
+          ¿Qué área de tu vida necesita más guía en este momento?
+        </div>
+        <div class="interest-grid" id="interest-grid">
+          <div class="interest-card" data-value="energia" onclick="selectInterest(this)">
+            <div class="interest-card-icon">✦</div>
+            <div class="interest-card-label">Energía y<br>Protección</div>
+          </div>
+          <div class="interest-card" data-value="abundancia" onclick="selectInterest(this)">
+            <div class="interest-card-icon">◈</div>
+            <div class="interest-card-label">Abundancia y<br>Manifestación</div>
+          </div>
+          <div class="interest-card" data-value="relaciones" onclick="selectInterest(this)">
+            <div class="interest-card-icon">❋</div>
+            <div class="interest-card-label">Amor y<br>Relaciones</div>
+          </div>
+          <div class="interest-card" data-value="salud" onclick="selectInterest(this)">
+            <div class="interest-card-icon">◇</div>
+            <div class="interest-card-label">Salud y<br>Sanación</div>
+          </div>
+          <div class="interest-card" data-value="proposito" onclick="selectInterest(this)">
+            <div class="interest-card-icon">⬡</div>
+            <div class="interest-card-label">Propósito y<br>Misión de Vida</div>
+          </div>
+          <div class="interest-card" data-value="despertar" onclick="selectInterest(this)">
+            <div class="interest-card-icon">◉</div>
+            <div class="interest-card-label">Despertar<br>Espiritual</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit" disabled>
+          <span>⟡ CONECTAR CON MI DOBLE CUÁNTICO ⟡</span>
+        </button>
+        <div class="text-center">
+          <button type="button" class="btn-back" onclick="prevStep(2)">◂ Regresar</button>
+        </div>
+        <div class="privacy-note">
+          Tu información está protegida por encriptación cuántica.<br>
+          Nunca compartiremos tus datos. 
+          <a href="/policies/privacy-policy" target="_blank">Política de privacidad</a>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- ===== SCIENCE FOOTER ===== -->
+  <div class="footer">
+    <p>
+      Basado en la Teoría del Desdoblamiento del Tiempo de J.P. Garnier Malet<br>
+      Frecuencias Solfeggio · Arquetipos de C.G. Jung · Campo Cuántico Unificado<br><br>
+      <a href="https://metayantra.com.mx" target="_blank">metayantra.com.mx</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ===== CONFIG =====
+// IMPORTANT: Replace with your actual oracle URL
+const ORACLE_URL = 'https://oraculo-cuantico.vercel.app';
+
+// IMPORTANT: Replace with your Klaviyo public API key (Company ID)
+// Find it in Klaviyo → Settings → API Keys → Public API Key / Site ID
+const KLAVIYO_COMPANY_ID = 'T7NUrv';
+const KLAVIYO_LIST_ID = 'PASTE_YOUR_LIST_ID_HERE'; // Ver instrucciones abajo para obtener este ID
+
+// ===== STATE =====
+let currentStep = 1;
+let selectedInterest = null;
+
+// ===== INIT COSMOS =====
+(function initCosmos() {
+  const cosmos = document.getElementById('cosmos');
+  for (let i = 0; i < 70; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    star.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;opacity:${Math.random()*0.6+0.1};--dur:${Math.random()*4+2}s;--delay:${Math.random()*3}s;`;
+    cosmos.appendChild(star);
+  }
+})();
+
+// ===== COUNTER ANIMATION =====
+(function animateCounter() {
+  const el = document.getElementById('counter-number');
+  const target = 2847;
+  let current = 0;
+  const duration = 2000;
+  const start = performance.now();
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    current = Math.floor(eased * target);
+    el.textContent = current.toLocaleString();
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  setTimeout(() => requestAnimationFrame(tick), 800);
+})();
+
+// ===== MULTI-STEP FORM =====
+function showStep(step) {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+  document.querySelectorAll('.step-dot').forEach(d => {
+    const s = parseInt(d.dataset.step);
+    d.classList.remove('active', 'done');
+    if (s === step) d.classList.add('active');
+    else if (s < step) d.classList.add('done');
+  });
+  currentStep = step;
+}
+
+function nextStep(step) {
+  // Validate current step
+  if (currentStep === 1) {
+    const name = document.getElementById('field-name').value.trim();
+    const email = document.getElementById('field-email').value.trim();
+    if (!name) { shakeField('field-name'); return; }
+    if (!email || !email.includes('@')) { shakeField('field-email'); return; }
+  }
+  if (currentStep === 2) {
+    const birthdate = document.getElementById('field-birthdate').value;
+    if (!birthdate) { shakeField('field-birthdate'); return; }
+  }
+  showStep(step);
+}
+
+function prevStep(step) { showStep(step); }
+
+function shakeField(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = 'rgba(255,100,100,0.5)';
+  el.style.animation = 'none';
+  el.offsetHeight; // trigger reflow
+  el.style.animation = 'shake 0.4s ease';
+  setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 500);
+}
+
+// Add shake animation
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}`;
+document.head.appendChild(shakeStyle);
+
+// ===== INTEREST SELECTION =====
+function selectInterest(card) {
+  document.querySelectorAll('.interest-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedInterest = card.dataset.value;
+  document.getElementById('btn-submit').disabled = false;
+}
+
+// ===== FORM SUBMIT =====
+document.getElementById('oracle-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const data = {
+    name: document.getElementById('field-name').value.trim(),
+    email: document.getElementById('field-email').value.trim(),
+    phone: document.getElementById('field-phone').value.trim(),
+    birthdate: document.getElementById('field-birthdate').value,
+    country: document.getElementById('field-country').value,
+    source: document.getElementById('field-source').value,
+    interest: selectedInterest,
+    timestamp: new Date().toISOString(),
+    origin: 'oraculo_cuantico'
+  };
+
+  // Show loading
+  document.getElementById('loading').classList.add('active');
+
+  // Send to Klaviyo
+  try {
+    await sendToKlaviyo(data);
+  } catch(err) {
+    console.log('Klaviyo send failed, continuing:', err);
+  }
+
+  // Also save to localStorage as backup
+  try {
+    const leads = JSON.parse(localStorage.getItem('oraculo_leads') || '[]');
+    leads.push(data);
+    localStorage.setItem('oraculo_leads', JSON.stringify(leads));
+  } catch(err) {}
+
+  // Redirect to oracle after a dramatic pause
+  setTimeout(() => {
+    window.location.href = ORACLE_URL;
+  }, 2500);
+});
+
+// ===== KLAVIYO INTEGRATION =====
+async function sendToKlaviyo(data) {
+  if (KLAVIYO_COMPANY_ID === 'YOUR_KLAVIYO_COMPANY_ID') {
+    console.log('Klaviyo not configured. Lead data:', data);
+    return;
+  }
+
+  // Klaviyo Client API - Subscribe profile
+  const payload = {
+    data: {
+      type: 'subscription',
+      attributes: {
+        custom_source: 'Oráculo Cuántico',
+        profile: {
+          data: {
+            type: 'profile',
+            attributes: {
+              email: data.email,
+              first_name: data.name.split(' ')[0],
+              last_name: data.name.split(' ').slice(1).join(' '),
+              phone_number: data.phone || undefined,
+              location: {
+                country: data.country || undefined
+              },
+              properties: {
+                birthdate: data.birthdate,
+                source: data.source,
+                spiritual_interest: data.interest,
+                signup_origin: 'oraculo_cuantico',
+                signup_date: data.timestamp
+              }
+            }
+          }
+        }
+      },
+      relationships: {
+        list: {
+          data: {
+            type: 'list',
+            id: KLAVIYO_LIST_ID
+          }
+        }
+      }
+    }
+  };
+
+  await fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${KLAVIYO_COMPANY_ID}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'revision': '2024-02-15'
+    },
+    body: JSON.stringify(payload)
+  });
+}
+
+// ===== HELPER: auto-format phone =====
+document.getElementById('field-phone').addEventListener('input', function(e) {
+  let val = e.target.value.replace(/[^\d+\s()-]/g, '');
+  e.target.value = val;
+});
+
+// ===== HELPER: text-center class =====
+document.querySelectorAll('.text-center').forEach(el => el.style.textAlign = 'center');
+</script>
+</body>
+</html>
